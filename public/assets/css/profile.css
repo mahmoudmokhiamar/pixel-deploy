@@ -1,0 +1,87 @@
+.cont {
+    width: 80%;
+    height: 60%;
+    background-color: aliceblue;
+    margin-left: 10%;
+    border-radius: 40px;
+    
+}
+
+
+        /* Additional styling for the modal */
+        .modal-content {
+            max-width: 600px;
+            margin: auto;
+        }
+h2 {
+    text-align: center;
+    padding-top: 40px;
+}
+
+hr {
+    width: 100%;
+    margin-top: 20px;
+
+    border: none;
+    height: 5px;
+    /* Adjust height to make it bold */
+
+
+}
+
+.cont img {
+    width: 50%;
+    height: 50%;
+
+}
+
+.info {
+display: flex;
+}
+.name{
+    padding: 0%;
+    height: 100%;
+    width: 30%;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 6%;
+}
+
+
+.info .profile-container p{
+margin-right: 60%;
+font-weight: bold;
+width: 400px;
+
+}
+
+.profile-item{
+    display: block;
+    width: 40%;
+    height: 100%;
+
+
+
+}
+.profile-container{
+       display: flex; 
+       padding: 6% 0%;
+
+       justify-content: center;
+       
+       
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 7%;
+    margin: 0 10px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: bold;
+}

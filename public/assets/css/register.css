@@ -1,0 +1,40 @@
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+    .fixed-height {
+       
+        height: 900px;
+        overflow: hidden;
+
+      }
+      
+      .fixed-height .container {
+        height: 100%;
+      }
+      
+      .fixed-height .row {
+        height: 100%;
+      }
+      
+      .fixed-height .card {
+        height: 100%;
+      }
+      
+      .fixed-height .card-body {
+        overflow-y: auto; /* Allows scrolling within the card body */
+      }
+      .pending-message {
+        display: none;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    .pending-message img {
+        margin-top: 1rem;
+    }
+      
