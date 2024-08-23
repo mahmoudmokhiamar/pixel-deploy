@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Edura - Online Courses & Education HTML Template - Courses Page</title>
+    <meta name="author" content="themeholy">
+    <meta name="description" content="Edura - Online Courses & Education HTML Template">
+    <meta name="keywords" content="Edura - Online Courses & Education HTML Template">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicons - Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--==============================
+	  Google Fonts
+	============================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+
+
+    <!--==============================
+	    All CSS File
+	============================== -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Fontawesome Icon -->
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+    <!-- Slick Slider -->
+    <link rel="stylesheet" href="assets/css/slick.min.css">
+    <!-- Nice Select -->
+    <link rel="stylesheet" href="assets/css/nice-select.min.css">
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        *{
+            text-align: center;
+        }
+        th, td{
+            text-align: center !important;
+        }
+        /* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+/* Table Header */
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+/* Alternating Row Colors */
+tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Light gray */
+}
+
+tr:nth-child(even) {
+    background-color: #ffffff; /* White */
+}
+
+/* Hover Effect */
+tr:hover {
+    background-color: #ddd; /* Slightly darker gray when hovering */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    td.hidden {
+        display: none;
+    }
+}
+
+    </style>
+</head>
+<body class="bg-gray-100">
+    
+
+    <!--==============================
+     Preloader
+  ==============================-->
+  <div class="preloader ">
+    <button class="th-btn style3 preloaderCls">Cancel Preloader </button>
+    <div class="preloader-inner">
+        <span class="loader"></span>
+    </div>
+</div>
+<!--==============================
+Mobile Menu
+============================== -->
+<div class="th-menu-wrapper">
+    <div class="th-menu-area text-center">
+        <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
+        <div class="mobile-logo">
+            <a href="home-2.html"><img src="assets/img/pixel_png.png" alt="pixel logo"
+                    style="width: 30; height:auto;"></a>
+        </div>
+        <!-- Add profile and language toggle buttons here -->
+        <div class="th-menu-buttons">
+            <a href="profile.html"><button class="th-btn" data-i18n="profile"><i class="fal fa-user"></i>
+                    Profile</button></a>
+            <button class="th-btn" id="language-toggle-mob" data-i18n="change_language">
+                <i class="fa-solid fa-globe"></i> Change Languages
+            </button>
+        </div>
+        <div class="th-mobile-menu">
+            <ul>
+                <li class="">
+                    <a href="home-2.html" data-i18n="home">Home</a>
+                </li>
+                <li class="">
+                    <a href="course.html" data-i18n="Courses">Courses</a>
+                </li>
+                <li class="">
+                    <a href="course.html" data-i18n="offers">Offers</a>
+                </li>
+                <li class="">
+                    <a href="#" data-i18n="teachers">Teachers</a>
+                </li>
+                <li class="">
+                    <a href="exams-done.html" data-i18n="exams">Exams</a>
+                </li>
+                <li class="">
+                    <a href="contact.html" data-i18n="contact">Contact us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--==============================
+Sidemenu
+============================== -->
+<div class="sidemenu-wrapper d-none d-lg-block ">
+    <div class="sidemenu-content">
+        <button class="closeButton sideMenuCls"><i class="far fa-times"></i></button>
+        <div class="widget  ">
+            <div class="th-widget-about">
+                <div class="about-logo">
+                    <a href="home-2.html"><img src="assets/img/logo.svg" alt="Edura"></a>
+                </div>
+                <p class="about-text">Intrinsicly target low-risk high-yield sources with proactive niche markets. Holisticly strategize intermandated.</p>
+                <div class="th-social style2">
+                    <h6 class="title">FOLLOW US ON:</h6>
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.skype.com/"><i class="fab fa-skype"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="widget  ">
+            <h3 class="widget_title">Recent Posts</h3>
+            <div class="recent-post-wrap">
+                <div class="recent-post">
+                    <div class="media-img">
+                        <a href="blog-details.html"><img src="assets/img/blog/recent-post-1-1.jpg" alt="Blog Image"></a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="post-title"><a class="text-inherit" href="blog-details.html">How To Start Learn Online Study From Your Home</a></h4>
+                        <div class="recent-post-meta">
+                            <a href="blog.html"><i class="fal fa-calendar"></i>21/6/2023</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-post">
+                    <div class="media-img">
+                        <a href="blog-details.html"><img src="assets/img/blog/recent-post-1-2.jpg" alt="Blog Image"></a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="post-title"><a class="text-inherit" href="blog-details.html">A Guide for Teachers and Education Staff.</a></h4>
+                        <div class="recent-post-meta">
+                            <a href="blog.html"><i class="fal fa-calendar"></i>22/6/2023</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-post">
+                    <div class="media-img">
+                        <a href="blog-details.html"><img src="assets/img/blog/recent-post-1-3.jpg" alt="Blog Image"></a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="post-title"><a class="text-inherit" href="blog-details.html">Educate Empower Excel Discover the Power.</a></h4>
+                        <div class="recent-post-meta">
+                            <a href="blog.html"><i class="fal fa-calendar"></i>25/6/2023</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="widget widget_contact  ">
+            <h3 class="widget_title">Get in touch!</h3>
+            <p class="contact-text">Fusce varius, dolor tempor interdum tristiquei bibendum service life.</p>
+            <div class="th-widget-contact">
+                <div class="info-box-wrap">
+                    <div class="info-box_icon">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+                    <p class="info-box_text">
+                        147/I, Green Road, Gulshan Avenue, Panthapath, Dhaka
+                    </p>
+                </div>
+                <div class="info-box-wrap">
+                    <div class="info-box_icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <a href="mailto:info@Edura.com" class="info-box_link">info@edura.com</a>
+                </div>
+                <div class="info-box-wrap">
+                    <div class="info-box_icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <a href="tel:+11234567890" class="info-box_link">+256 214 203 215</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--==============================
+Header Area
+==============================-->
+<header class="th-header header-layout6 z-0">
+    <div class="header-top">
+        <div class="container">
+            <div class="row justify-content-center justify-content-md-between align-items-center gy-2">
+                <div class="col-auto d-none d-md-block">
+                    <div class="header-links">
+                        <ul>
+                            <li><i class="far fa-phone"></i><a href="#" class="whatsappLink">01101010424</a></li>
+                            <li><i class="far fa-phone"></i><a href="#" class="whatsappLink2">01224449193</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="header-links">
+                        <ul>
+                            <li class="d-none d-lg-inline-block">
+                                <!-- <div class="dropdown-link">
+                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">Language</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                        <li>
+                                            <a href="#">German</a>
+                                            <a href="#">French</a>
+                                            <a href="#">Italian</a>
+                                            <a href="#">Latvian</a>
+                                            <a href="#">Spanish</a>
+                                            <a href="#">Greek</a>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                                <button type="button" class="icon-btn-lang" id="language-toggle">
+                                    <i class="far fa-language"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <div class="header-social">
+                                    <span class="social-title">Follow Us:</span>
+                                    <a href="https://www.facebook.com/share/ZN7Yw9U6FZE2C6DY/?mibextid=qi2Omg"><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a
+                                        href="https://www.facebook.com/groups/geo.hamida.official/?ref=share&mibextid=NSMWBT"><i
+                                            class="fa-solid fa-user-group"></i></a>
+                                    <a href="https://t.me/mrhamidaahmed"><i class="fab fa-telegram"></i></a>
+                                    <a href="https://youtube.com/@mr.hamidaahmed?si=BMnr--OR44i6klhE"><i
+                                            class="fab fa-youtube"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sticky-wrapper">
+        <div class="sticky-active">
+            <!-- Main Menu Area -->
+            <div class="menu-area" data-bg-src="assets/img/update1/bg/pattern_bg_2.png">
+                <div class="container">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-auto">
+                            <div class="header-logo">
+                                <a href="home-2.html" style="display: flex; align-items: center;"><img
+                                        src="assets/img/hamida_logo_01.png"
+                                        style="width: 200px; border: none;object-fit:cover; max-height: 100px; align-items:center; margin-right:3rem"
+                                        alt="Edura">
+                                    <!-- <span style="font-weight: bold; font-size: large;">Hamida Academy</span> -->
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <nav class="main-menu d-none d-lg-inline-block">
+                                        <ul>
+                                            <li class="">
+                                                <a href="home-2.html" data-i18n="home">Home</a>
+
+                                            </li>
+                                            <li class="">
+                                                <a href="course.html" data-i18n="Courses">Courses</a>
+
+                                            </li>
+                                            <li class="">
+                                                <a href="course.html" data-i18n="offers">Offers</a>
+
+                                            </li>
+                                            <li class="">
+                                                <a href="exams-done.html" data-i18n="exams">Exams</a>
+
+                                            </li>
+                                            <li class="">
+                                                <a href="contact.html" data-i18n="contact">Contact us</a>
+
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    <button type="button" class="th-menu-toggle d-inline-block d-lg-none"><i
+                                            class="far fa-bars"></i></button>
+                                </div>
+                                <div class="col-auto d-none d-xl-block">
+                                    <div class="header-button">
+                                        <!-- <button type="button" class="simple-icon me-3 searchBoxToggler"><i class="far fa-search"></i></button> -->
+                                        <div id="profile-container">
+                                            <a href="login.html" class="th-btn style3">تسجيل الدخول<i
+                                                    class="fas fa-arrow-right ms-2"></i></a>
+                                        </div>
+                                        <!-- <a href="#" class="simple-icon style2 ms-3 sideMenuToggler"><i class="fa-sharp fa-solid fa-grid"></i></a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="logo-shape"></div>
+            </div>
+        </div>
+    </div>
+</header>
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="bg-white w-80 p-6 shadow-lg hidden md:block">
+                    <div class="text-2xl font-bold mb-4 text-darkblue">الاعدادات</div>
+            <nav>
+                <ul>
+                    
+                                            <li class="mb-2"><a href="profile.html" class="block p-2 bg-gray-200 hover:bg-gray-300  rounded" style="color: black;">الصفحة الشخصية</a></li>
+                                            <li class="mb-2"><a href="charged-code2.html" class="block p-2  bg-blue-500 text-white rounded">شحن الكود/تاريخ الميزانية</a></li>
+                                            <li class="mb-2"><a href="#" class="block p-2 hover:bg-gray-200 rounded" id="logout"
+                                                    style="background-color: red; color:white">تسجيل الخروج</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <header class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold"></h1>
+            </header>
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Redeem code -->
+                <div class="bg-white p-6 shadow-lg rounded-lg">
+                    <h2 class="text-xl font-semibold mb-4">شحن كود</h2>
+                    <div>
+                        <form action="" id="charge-code-form">
+                            <input type="text" placeholder="شحن كود" class="w-full p-2 mb-4 border rounded-md" id="code-input">
+                            <button class="w-full p-2 bg-blue-500 text-white rounded-md">شحن كود</button>
+                        </form>
+
+                    </div>                </div>
+                <!-- Expenses -->
+                <div class="bg-white p-6 shadow-lg rounded-lg">
+                    <!-- <h2 class="text-xl font-semibold mb-4">Budget</h2> -->
+                    <ul>
+                        <li class="flex justify-between mb-2 font-bold text-lg border-b pb-2">
+                          <span>مدرس</span><span>الميزانية</span>
+                        </li>
+                        <div id="teacher-budget-container"></div>
+                        <!-- <li class="flex justify-between mb-2">
+                          <span>Masry</span><span>$89.99</span>
+                        </li>
+                        <li class="flex justify-between mb-2">
+                          <span>Spotify</span><span>$36.99</span>
+                        </li>
+                        <li class="flex justify-between mb-2">
+                          <span>Amazon</span><span>$354.99</span>
+                        </li>
+                        <li class="flex justify-between mb-2">
+                          <span>Xbox</span><span>$29.99</span>
+                        </li> -->
+                      </ul>
+                      
+                </div>
+                <!-- Latest Transactions -->
+                <div class="bg-white p-6 shadow-lg rounded-lg col-span-1 md:col-span-3" id="no-border">
+                    <h2 class="text-xl font-semibold mb-4">اخر المعاملات</h2>
+                    <table class=" w-full" >
+                        <thead>
+                            <tr style="background-color: #ffffff;">
+                                <th class="text-left p-2">اسم المدرس</th>
+                                <th class="text-left p-2 hidden md:block">تاريخ</th>
+                                <th class="text-left p-2">سعر</th>
+                                <th class="text-left p-2 hidden md:block">كود</th>
+                            </tr>
+                        </thead>
+                        <tbody id="chargedCodesTableBody">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bg-white p-6 shadow-lg rounded-lg col-span-1 md:col-span-3" id="no-border">
+                    <h2 class="text-xl font-semibold mb-4">تاريخ الميزانية</h2>
+                    <table class="w-full">
+                        <thead>
+                            <tr style="background-color: #ffffff;">
+                                <th class="text-left p-2">التاريخ</th>
+                                <th class="text-left p-2">الميزانية قبل</th>
+                                <th class="text-left p-2">الميزانية بعد</th>
+                                <th class="text-left p-2 hidden md:block">التفاصيل</th>
+                            </tr>
+                        </thead>
+                        <tbody id="budgetHistoryTableBody">
+                            <!-- Budget history records will be appended here -->
+                        </tbody>
+                    </table>
+                    <div id="pagination" class="mt-4 text-center">
+                        <!-- Pagination buttons will be generated here -->
+                    </div>
+                    <div style="height: 100px; ;"></div>
+                </div>
+
+
+            </section>  
+        </main>
+    </div>
+    
+    
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/language.js"></script>
+</body>
+<div style="height: 50px;"></div>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson Viewer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <style>
+    /* Custom modal styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: white;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="lessonContent"></div>
+
+  <div class="row mt-4">
+    <div class="col-md-7 mr-4 course-outline">
+      <!-- Custom Modal -->
+      <div id="pdf-popup" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>PDF Downloads</h2>
+          <ul id="pdf-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      const token = localStorage.getItem('token');
+      const studentId = localStorage.getItem('userId');
+      const courseId = localStorage.getItem('courseId');
+
+      // Fetch and display lessons
+      $.ajax({
+        url: `http://pixeltest2-001-site1.ltempurl.com/api/v3/Lesson/CourseLessons?courseId=${courseId}&studentId=${studentId}`,
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        success: function(response) {
+          console.log('Course Lessons Response:', response); // Log response for debugging
+          if (response.isSuccess && response.data.length > 0) {
+            const lessons = response.data;
+            lessons.forEach(lesson => {
+              loadLesson(lesson.courseLessonsId); // Load each lesson's content
+            });
+          }
+        },
+        error: function() {
+          console.log("No lessons");
+        }
+      });
+    });
+
+    function loadLesson(lessonId) {
+      const token = localStorage.getItem('token');
+      const studentId = localStorage.getItem('userId');
+
+      localStorage.setItem('lessonId', lessonId);
+
+      $.ajax({
+        url: `http://pixeltest2-001-site1.ltempurl.com/api/v3/Lesson/Page?lessonId=${lessonId}&studentId=${studentId}`,
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        success: function(response) {
+          console.log('Lesson Page Response:', response); // Log response for debugging
+          const lessonData = response.data;
+
+          if (!lessonData.isPurchased) {
+            $('#lessonContent').append('<div class="text-center text-2xl text-red-500">You have not purchased this course</div>');
+          } else {
+            const lessonCard = `
+              <div class="lesson-card">
+                <div class="lesson-info">
+                  <img src="assets/img/video.png" alt="Lesson Icon" class="w-20 h-20">
+                  <div class="lesson-details">
+                    <h5>${lessonData.lessonName}</h5>
+                    <p><i class="far fa-calendar-alt"></i> ${lessonData.zoomMeetingLink}</p>
+                    <span><i class="fa-solid fa-eye"></i> ${lessonData.totalViewsNumber}</span>
+                    <span><i class="fas fa-users"></i> ${lessonData.videosCount}</span>
+                    <span><i class="far fa-user"></i> ${lessonData.teacherName}</span>
+                  </div>
+                </div>
+                <div class="lesson-status">
+                  <span class="status-badge status-planned">Planned</span>
+                  <button class="btn join-lesson-btn ml-3" onclick="watchLesson('${lessonData.videoUrl}')">Watch Lesson</button>
+                  <button class="btn download-pdf-btn ml-3" onclick="openPdfPopup()">Download PDF</button>
+                </div>
+              </div>
+            `;
+            $('#lessonContent').append(lessonCard);
+          }
+        },
+        error: function(error) {
+          console.error('Error fetching lesson:', error);
+        }
+      });
+    }
+
+    function openPdfPopup() {
+      const token = localStorage.getItem('token');
+      const lessonId = localStorage.getItem('lessonId');
+      const studentId = localStorage.getItem('userId');
+
+      $.ajax({
+        url: `http://pixeltest2-001-site1.ltempurl.com/api/v3/Lesson/LessonPdf?lessonId=${lessonId}&studentId=${studentId}`,
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        success: function(response) {
+          console.log('PDF Popup Response:', response); // Log response for debugging
+          if (response.isSuccess && Array.isArray(response.data)) {
+            $('#pdf-list').empty();
+            response.data.forEach(function(pdf) {
+              $('#pdf-list').append('<li><a href="' + pdf.link + '" download>' + pdf.pdfName + '</a></li>');
+            });
+            $('#pdf-popup').show();
+          } else {
+            alert('Failed to fetch PDF data.');
+          }
+        },
+        error: function() {
+          alert('Error occurred while fetching PDF data.');
+        }
+      });
+    }
+
+    // Close the modal when the user clicks on <span> (x)
+    $(document).on('click', '.close', function() {
+      $('#pdf-popup').hide();
+    });
+
+    // Close the modal when the user clicks anywhere outside of the modal
+    $(window).on('click', function(event) {
+      if ($(event.target).is('#pdf-popup')) {
+        $('#pdf-popup').hide();
+      }
+    });
+  </script>
+</body>
+</html>

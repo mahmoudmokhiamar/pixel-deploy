@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #exam-name {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        #questions-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border-left: 4px solid #4CAF50;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .question p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .question img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .choices label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 10px;
+            background: #fff;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .choices label:hover {
+            background-color: #e7f5e7;
+            border-color: #4CAF50;
+        }
+
+        .choices input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #4CAF50;
+        }
+
+        .text-answer {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        #submit-answers {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 30px auto;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #submit-answers:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            #questions-container {
+                padding: 15px;
+            }
+
+            .question p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1 id="exam-name"></h1>
+    <div id="questions-container"></div>
+    <button id="submit-answers">Submit Answers</button>
+
+    <script>
+        $(document).ready(function() {
+            const examId = localStorage.getItem('examRelationId');
+            const studentId = localStorage.getItem('userId');
+            const token = localStorage.getItem('token'); 
+        
+            // Fetch exam details
+            $.ajax({
+                url: `http://pixelstamp-007-site3.htempurl.com/api/v3/Exam/Page?ExamId=${examId}&StudentId=${studentId}`,
+                type: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                success: function(response) {
+                    if (response.isSuccess) {
+                        $('#exam-name').text(response.data.name);
+                        const questions = response.data.questions;
+                        questions.forEach((question, index) => {
+                            let imageUrl = question.image ? `http://pixelstamp-007-site3.htempurl.com${question.image.replace(/\\/g, '/')}` : '';
+                            let questionHtml = `<div class="question" data-question-id="${question.questionId}">
+                                                    ${question.question ? `<p>${index + 1}. ${question.question}</p>` : ''}
+                                                    ${imageUrl ? `<img src="${imageUrl}" alt="Question Image">` : ''}`;
+
+                            if (question.choicesList && question.answerType === 1) { // Multiple Choice
+                                questionHtml += `<div class="choices">
+                                                    ${question.choicesList.map(choice => `
+                                                        <label>
+                                                            <input type="radio" name="question-${question.questionId}" value="${choice.value}">
+                                                            ${choice.text}
+                                                        </label>
+                                                    `).join('')}
+                                                 </div>`;
+                            } else if (question.answerType === 3) { // Text answer
+                                questionHtml += `<textarea class="text-answer" name="question-${question.questionId}" rows="4" placeholder="Type your answer here..."></textarea>`;
+                            }else if (question.answerType === 2) { // True/False
+                                questionHtml += `<div class="choices">
+                                                    <label>
+                                                        <input type="radio" name="question-${question.questionId}" value="true">
+                                                        صح
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="question-${question.questionId}" value="false">
+                                                        خطأ
+                                                    </label>
+                                                 </div>`;
+                            }
+
+                            questionHtml += `</div>`;
+                            $('#questions-container').append(questionHtml);
+                        });
+                    } else {
+                        alert('Failed to load exam details: ' + response.message);
+                    }
+                },
+                error: function(error) {
+                    alert(error.responseJSON.message);
+                }
+            });
+        
+            // Submit answers
+            $('#submit-answers').click(function() {
+                const answers = [];
+                $('.question').each(function() {
+                    const questionId = $(this).data('question-id');
+                    const radioAnswer = $(`input[name="question-${questionId}"]:checked`).val();
+                    const textAnswer = $(`textarea[name="question-${questionId}"]`).val();
+
+                    if (radioAnswer) {
+                        answers.push({ questionId: questionId, answer: radioAnswer });
+                    } else if (textAnswer) {
+                        answers.push({ questionId: questionId, answer: textAnswer });
+                    }
+                });
+        
+                $.ajax({
+                    url: 'http://pixelstamp-007-site3.htempurl.com/api/v3/Exam/SubmitAnswers',
+                    type: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    data: JSON.stringify({
+                        examRelationId: examId, // Assuming examRelationId is same as examId
+                        studentId: studentId,
+                        answers: answers
+                    }),
+                    success: function(response) {
+                        alert('Answers submitted successfully!');
+                                            window.location.href = "exams-done.html";
+
+                    },
+                    error: function(response) {
+                        alert(response.responseJSON.message);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html class="no-js" lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Edura - Online Courses & Education HTML Template - Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Custom Inline CSS -->
+    <style>
+        .btn-submit {
+            background-color: blueviolet;
+            color: white;
+        }
+
+        .btn-block {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        /* Styling placeholders */
+::placeholder {
+    color: #a9a9a9; /* Light gray color */
+    font-weight: 300; /* Light font weight */
+}
+
+/* Increase specificity */
+form input::placeholder {
+    color: #a9a9a9 !important;
+    font-weight: 300 !important;
+    font-size: small;
+}
+
+form textarea::placeholder {
+    color: #a9a9a9 !important;
+    font-weight: 300 !important;
+}
+
+
+    </style>
+</head>
+
+<body>
+    
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card">
+                        <div class="card-body p-5">
+                            <div class="d-flex align-items-center justify-content-center mb-4">
+                                <img src="assets/img/hamida_logo_02.png" alt="Logo" class="align-items-center" style="height: 200px; width: 200px;">
+                                
+                            </div>
+
+                            <form id="gradeForm" style="display: none;">
+                                <label for="grades">اختر الصف:</label>
+                                <select id="grades" name="gradeId"></select>
+                                <button type="submit" class="btn btn-lg"
+                                    style="background-color: blueviolet; color:white;">إرسال</button>
+                            </form>
+                            <div id="pendingMessage" class="pending-message" style="display: none;">
+                                <p class="display-4">Your account is pending approval</p>
+                                <img src="assets/img/verify.png" alt="Pending Approval"
+                                    class="img-fluid mx-auto d-block" style="width: 150px;" />
+                              
+                                <div class="mt-4 text-center">
+                                    <a href="home-2.html" class="btn btn-primary btn-lg">Return Home</a>
+                                </div>
+                            </div>
+<form id="registrationForm">
+    <div class="mb-3">
+        <label class="form-label" for="name">الاسم</label>
+        <input type="text" id="name" name="name" class="form-control form-control-lg" required
+            placeholder="ادخل اسمك باللغة العربية" />
+        <div class="invalid-feedback">الرجاء إدخال النص باللغة العربية فقط.</div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="phoneNumber">رقم التليفون</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control form-control-lg" required
+            placeholder="ادخل رقم تليفونك واتساب" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="parentPhone">رقم ولي الامر</label>
+        <input type="text" id="parentPhone" name="parentPhone" class="form-control form-control-lg"
+            placeholder="ادخل رقم ولي الامر (واتساب ان وجد)" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="governorate">المحافظة</label>
+        <input type="text" id="governorate" name="governorate" class="form-control form-control-lg" required
+            placeholder="ادخل المحافظة" />
+        <div class="invalid-feedback">الرجاء إدخال النص باللغة العربية فقط.</div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="city">العنوان</label>
+        <input type="text" id="city" name="city" class="form-control form-control-lg" required
+            placeholder="ادخل العنوان" />
+        <div class="invalid-feedback">الرجاء إدخال النص باللغة العربية فقط.</div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="school">المدرسة</label>
+        <input type="text" id="school" name="school" class="form-control form-control-lg" required
+            placeholder="ادخل اسم مدرستك" />
+        <div class="invalid-feedback">الرجاء إدخال النص باللغة العربية فقط.</div>
+    </div>
+    <div class="mb-4">
+        <label class="form-label" for="password">كلمة السر</label>
+        <input type="password" id="password" name="password" class="form-control form-control-lg" required
+            placeholder="ادخل كلمة السر" />
+    </div>
+    <p>هل لديك حساب؟ <i class="far fa-user"></i><a href="login.html"> تسجيل الدخول</a></p>
+    <div id="response"></div>
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-submit btn-lg btn-block" style="background-color: #0e67e3;">تسجيل الان</button>
+    </div>
+    
+    <div class="mt-4 text-center">
+        <a href="home-2.html" class="btn btn-primary btn-lg btn-block">الصفحة الرئيسية</a>
+    </div>
+</form> 
+
+
+<script>
+    document.getElementById('registrationForm').addEventListener('input', function (event) {
+        const arabicPattern = /^[\u0600-\u06FF\s]+$/;
+        const field = event.target;
+
+        if (['name', 'governorate', 'city', 'school'].includes(field.id)) {
+            if (!arabicPattern.test(field.value)) {
+                field.setCustomValidity('الرجاء إدخال النص باللغة العربية فقط.');
+                field.classList.add('is-invalid');
+            } else {
+                field.setCustomValidity('');
+                field.classList.remove('is-invalid');
+            }
+        }
+    });
+</script>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/register.js"></script>
+</body>
+
+</html>

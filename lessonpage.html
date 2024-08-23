@@ -1,0 +1,1096 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edura - Online Courses & Education HTML Template - Courses Page</title>
+    <meta name="author" content="themeholy">
+    <meta name="description" content="Edura - Online Courses & Education HTML Template">
+    <meta name="keywords" content="Edura - Online Courses & Education HTML Template">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicons - Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--==============================
+	  Google Fonts
+	============================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+
+    <!--==============================
+	    All CSS File
+	============================== -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Fontawesome Icon -->
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+    <!-- Slick Slider -->
+    <link rel="stylesheet" href="assets/css/slick.min.css">
+    <!-- Nice Select -->
+    <link rel="stylesheet" href="assets/css/nice-select.min.css">
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/lessonpage.css">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <style>  
+            body {
+                font-family: "CustomFont", sans-serif;
+                font-weight: normal;
+            }
+        
+        
+            .container.my-5 {
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+            }
+        
+            .course-header,
+            .lesson-card {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        
+            .course-header {
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+        
+            .lesson-card {
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-left: -15px;
+                /* Adjust this value to shift left */
+            }
+        
+            .lesson-info {
+                display: flex;
+                align-items: center;
+            }
+        
+            .lesson-info img {
+                margin-right: 15px;
+            }
+        
+            .lesson-details h5 {
+                margin: 0;
+            }
+        
+            .lesson-status {
+                text-align: right;
+            }
+        
+            .status-badge {
+                display: inline-block;
+                padding: 5px 10px;
+                border-radius: 3px;
+            }
+        
+            .status-planned {
+                background-color: #ffc107;
+                color: white;
+            }
+        
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 100;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+        
+            .modal-content {
+                background-color: #fefefe;
+                margin: 15% auto;
+        
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                max-width: 600px;
+            }
+        
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+        
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        
+            .modal-content .close:hover,
+            .modal-content .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        
+            /* Success and Error Modals */
+            #pdf-popup .modal-content,
+            #message-popup .modal-content,
+            #exam-popup .modal-content,
+            #video-popup-isPurchased .modal-content,
+            #video-popup-ViewNum .modal-content,
+            #warning-video-view .modal-content {
+                background-color: #fff;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                vertical-align: middle;
+                margin-top: 200px;
+            }
+        
+            /* Custom styles for different messages */
+            #video-popup-isPurchased .modal-content {
+                border-top: 5px solid red;
+            }
+        
+            #video-popup-ViewNum .modal-content {
+                border-top: 5px solid red;
+            }
+        
+            #warning-video-view .modal-content {
+                border-top: 5px solid orange;
+            }
+        
+            .modal-content h1 {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #333;
+            }
+        
+            /* Buttons Styling */
+            .modal-content a {
+                display: inline-block;
+                background-color: #28a745;
+                /* Green */
+                color: white;
+                padding: 10px 20px;
+                margin-top: 20px;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+        
+            .modal-content a:hover {
+                background-color: #218838;
+            }
+        
+            .modal-content p {
+                margin: 15px 0;
+                color: #555;
+            }
+        
+            #warning-video-view a {
+                background-color: #dc3545;
+                /* Red */
+            }
+        
+            #warning-video-view a:hover {
+                background-color: #c82333;
+            }
+        </style>
+</head>
+<body class="bg-gray-100">
+    
+
+    <!--==============================
+     Preloader
+  ==============================-->
+  <!-- <div class="preloader ">
+    <button class="th-btn style3 preloaderCls">Cancel Preloader </button>
+    <div class="preloader-inner">
+        <span class="loader"></span>
+    </div>
+</div> -->
+<!--==============================
+Mobile Menu
+============================== -->
+<div class="th-menu-wrapper">
+    <div class="th-menu-area text-center">
+        <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
+        <div class="mobile-logo">
+            <a href="home-2.html"><img src="assets/img/pixel_png.png" alt="pixel logo"
+                    style="width: 30; height:auto; border:none"></a>
+        </div>
+        <!-- Add profile and language toggle buttons here -->
+        <div class="th-menu-buttons">
+            <a href="profile.html"><button class="th-btn" data-i18n="profile"><i class="fal fa-user"></i>
+                    Profile</button></a>
+            <button class="th-btn" id="language-toggle-mob" data-i18n="change_language">
+                <i class="fa-solid fa-globe"></i> Change Languages
+            </button>
+        </div>
+        <div class="th-mobile-menu">
+            <ul>
+                <li class="">
+                    <a href="home-2.html" data-i18n="home">Home</a>
+                </li>
+                <li class="">
+                    <a href="course.html" data-i18n="Courses">Courses</a>
+                </li>
+                <li class="">
+                    <a href="course.html" data-i18n="offers">Offers</a>
+                </li>
+                <li class="">
+                    <a href="exams-done.html" data-i18n="exams">Exams</a>
+                </li>
+                <li class="">
+                    <a href="contact.html" data-i18n="contact">Contact us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--==============================
+Sidemenu
+============================== -->
+<div class="sidemenu-wrapper d-none d-lg-block ">
+    <div class="sidemenu-content">
+        <button class="closeButton sideMenuCls"><i class="far fa-times"></i></button>
+        <div class="widget  ">
+            <div class="th-widget-about">
+                <div class="about-logo">
+                    <a href="home-2.html"><img src="assets/img/logo.svg" alt="Edura"></a>
+                </div>
+                <p class="about-text">Intrinsicly target low-risk high-yield sources with proactive niche markets. Holisticly strategize intermandated.</p>
+                <div class="th-social style2">
+                    <h6 class="title">FOLLOW US ON:</h6>
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.skype.com/"><i class="fab fa-skype"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="widget  ">
+            <h3 class="widget_title">Recent Posts</h3>
+            <div class="recent-post-wrap">
+                <div class="recent-post">
+                    <div class="media-img">
+                        <a href="blog-details.html"><img src="assets/img/blog/recent-post-1-1.jpg" alt="Blog Image"></a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="post-title"><a class="text-inherit" href="blog-details.html">How To Start Learn Online Study From Your Home</a></h4>
+                        <div class="recent-post-meta">
+                            <a href="blog.html"><i class="fal fa-calendar"></i>21/6/2023</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-post">
+                    <div class="media-img">
+                        <a href="blog-details.html"><img src="assets/img/blog/recent-post-1-2.jpg" alt="Blog Image"></a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="post-title"><a class="text-inherit" href="blog-details.html">A Guide for Teachers and Education Staff.</a></h4>
+                        <div class="recent-post-meta">
+                            <a href="blog.html"><i class="fal fa-calendar"></i>22/6/2023</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-post">
+                    <div class="media-img">
+                        <a href="blog-details.html"><img src="assets/img/blog/recent-post-1-3.jpg" alt="Blog Image"></a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="post-title"><a class="text-inherit" href="blog-details.html">Educate Empower Excel Discover the Power.</a></h4>
+                        <div class="recent-post-meta">
+                            <a href="blog.html"><i class="fal fa-calendar"></i>25/6/2023</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="widget widget_contact  ">
+            <h3 class="widget_title">Get in touch!</h3>
+            <p class="contact-text">Fusce varius, dolor tempor interdum tristiquei bibendum service life.</p>
+            <div class="th-widget-contact">
+                <div class="info-box-wrap">
+                    <div class="info-box_icon">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+                    <p class="info-box_text">
+                        147/I, Green Road, Gulshan Avenue, Panthapath, Dhaka
+                    </p>
+                </div>
+                <div class="info-box-wrap">
+                    <div class="info-box_icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <a href="mailto:info@Edura.com" class="info-box_link">info@edura.com</a>
+                </div>
+                <div class="info-box-wrap">
+                    <div class="info-box_icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <a href="tel:+11234567890" class="info-box_link">+256 214 203 215</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--==============================
+Header Area
+==============================-->
+<header class="th-header header-layout6 z-0">
+    <div class="header-top">
+        <div class="container">
+            <div class="row justify-content-center justify-content-md-between align-items-center gy-2">
+                <div class="col-auto d-none d-md-block">
+                    <div class="header-links">
+                        <ul>
+                            <li><i class="far fa-phone"></i><a href="#" class="whatsappLink">01101010424</a></li>
+                            <li><i class="far fa-phone"></i><a href="#" class="whatsappLink2">01224449193</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="header-links">
+                        <ul>
+                            <li class="d-none d-lg-inline-block">
+                                <!-- <div class="dropdown-link">
+                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">Language</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                        <li>
+                                            <a href="#">German</a>
+                                            <a href="#">French</a>
+                                            <a href="#">Italian</a>
+                                            <a href="#">Latvian</a>
+                                            <a href="#">Spanish</a>
+                                            <a href="#">Greek</a>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                                <button type="button" class="icon-btn-lang" id="language-toggle">
+                                    <i class="far fa-language"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <div class="header-social">
+                                    <span class="social-title">Follow Us:</span>
+                                    <a href="https://www.facebook.com/share/ZN7Yw9U6FZE2C6DY/?mibextid=qi2Omg"><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a
+                                        href="https://www.facebook.com/groups/geo.hamida.official/?ref=share&mibextid=NSMWBT"><i
+                                            class="fa-solid fa-user-group"></i></a>
+                                    <a href="https://t.me/mrhamidaahmed"><i class="fab fa-telegram"></i></a>
+                                    <a href="https://youtube.com/@mr.hamidaahmed?si=BMnr--OR44i6klhE"><i
+                                            class="fab fa-youtube"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sticky-wrapper">
+        <div class="sticky-active">
+            <!-- Main Menu Area -->
+            <div class="menu-area" data-bg-src="assets/img/update1/bg/pattern_bg_2.png">
+                <div class="container">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-auto">
+                            <div class="header-logo">
+                                <a href="home-2.html" style="display: flex; align-items: center;"><img
+                                        src="assets/img/hamida_logo_01.png"
+                                        style="width: 200px; border: none;object-fit:cover; max-height: 100px; align-items:center; margin-right:3rem"
+                                        alt="Edura">
+                                    <!-- <span style="font-weight: bold; font-size: large;">Hamida Academy</span> -->
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <nav class="main-menu d-none d-lg-inline-block">
+                                        <ul>
+                                            <li class="">
+                                                <a href="home-2.html" data-i18n="home">Home</a>
+
+                                            </li>
+                                            <li class="">
+                                                <a href="course.html" data-i18n="Courses">Courses</a>
+
+                                            </li>
+                                            <li class="">
+                                                <a href="course.html" data-i18n="offers">Offers</a>
+
+                                            </li>
+                                            <li class="">
+                                                <a href="exams-done.html" data-i18n="exams">Exams</a>
+
+                                            </li>
+                                            <li class="">
+                                                <a href="contact.html" data-i18n="contact">Contact us</a>
+
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    <button type="button" class="th-menu-toggle d-inline-block d-lg-none"><i
+                                            class="far fa-bars"></i></button>
+                                </div>
+                                <div class="col-auto d-none d-xl-block">
+                                    <div class="header-button">
+                                        <!-- <button type="button" class="simple-icon me-3 searchBoxToggler"><i class="far fa-search"></i></button> -->
+                                        <div id="profile-container">
+                                            <a href="login.html" class="th-btn style3">تسجيل الدخول<i
+                                                    class="fas fa-arrow-right ms-2"></i></a>
+                                        </div>
+                                        <!-- <a href="#" class="simple-icon style2 ms-3 sideMenuToggler"><i class="fa-sharp fa-solid fa-grid"></i></a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="logo-shape"></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<!-- the code starts here -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 course-header bg-white">
+            <div class="d-flex align-items-center">
+                <img src="https://via.placeholder.com/150" class="img-fluid" alt="Course Image" style="width: 150px; height: auto;" id="courseImg">
+                <div class="ml-4 mr-4">
+                    <h2 class="text-uppercase text-muted" id="course-details-title" style="font-size: 25px;">Course name</h2>
+                    <p id="course-description">there is no description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="lessonContent"></div>
+</div>
+
+
+    <div class="row mt-4">
+        <!-- Custom Modal for PDFs -->
+        <div id="pdf-popup" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>PDF Downloads</h2>
+                <ul id="pdf-list"></ul>
+            </div>
+        </div>
+
+        <!-- Custom Modal for Messages -->
+        <div id="message-popup" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                
+                <p id="message-content"></p>
+            </div>
+        </div>
+
+        <!-- Add this to your HTML -->
+        <div id="exam-popup" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <!-- <h2>Available Exams</h2> -->
+                <ul id="exam-list"></ul>
+            </div>
+        </div>
+
+
+        <!-- video pop up purchased  -->
+        <div id="video-popup-isPurchased" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                
+                <h1>عليك شراء الدرس او الكورس لمشاهدة الحصة</h1>
+               
+            </div>
+        </div>
+
+        <div id="video-popup-ViewNum" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                
+                 <h1> ليس لديك مشاهدات </h1>               
+            </div>
+        </div>
+
+        <div id="warning-video-view" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                
+                 <h1> احذر! ستخسر 1 مشاهدة اذا اكملت</h1> 
+                 <a href="videos-youtube.html">مشاهدة الحصة</a>              
+            </div>
+        </div>
+
+                <div id="purchaseLesson-popup" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        
+                        <span id="lessonPrice"></span>
+                        <h1>تاكيد شراء الحصة؟</h1>
+                        <button class="btn purchase-lesson-btn" onclick="purchaseLesson()" style="background-color: green; color:white">نعم</button>
+                    </div>
+                </div>
+<div id="purchaseView-popup" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        
+        <span id="lessonPrice"></span>
+        <h1>شراء مشاهدات</h1>
+        <input type="text" id="numberOfViewInput" placeholder="ادخل عدد المشاهدات">
+        <button class="btn purchase-lesson-btn" onclick="purchaseLessonViews()"
+            style="background-color: green; color:white">شراء</button>
+    </div>
+</div>
+
+
+<div id="link-popup" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>مراجع الحصة</h2>
+        <ul id="link-list"></ul>
+    </div>
+</div>
+
+
+
+
+
+        
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        const token = localStorage.getItem('token');
+        const studentId = localStorage.getItem('userId');
+        const courseId = localStorage.getItem('courseId');
+
+        // Fetch and display lessons
+        $.ajax({
+            url: `http://pixelstamp-007-site3.htempurl.com/api/v3/Lesson/CourseLessons?courseId=${courseId}&studentId=${studentId}`,
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            success: function(response) {
+                if (response.isSuccess && response.data.length > 0) {
+                    const lessons = response.data;
+                    lessons.forEach(lesson => {
+                        loadLesson(lesson.courseLessonsId,lesson.lessonPrice); // Load each lesson's content
+                    });
+                }
+            },
+            error: function() {
+                console.log("No lessons");
+            }
+        });
+    });
+
+    function loadLesson(lessonId,lessonPrice) {
+        const token = localStorage.getItem('token');
+        const studentId = localStorage.getItem('userId');
+
+        localStorage.setItem('lessonId', lessonId);
+
+        $.ajax({
+            url: `http://pixelstamp-007-site3.htempurl.com/api/v3/Lesson/Page?lessonId=${lessonId}&studentId=${studentId}`,
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            success: function(response) {
+                const lessonData = response.data;
+                console.log(response.data);
+                            let purchaseButton = '';
+                if (lessonData.isPurchased === false || lessonData.isPurchased === "false") {
+                    purchaseButton = `<button class="btn purchase-lesson-btn ml-md-2 mb-2 mb-md-0" onclick="showPurchasePopup('${lessonId}','${lessonPrice}')">شراء الحصة</button>`;
+                }
+                
+
+
+           
+                
+                    const lessonCard = `
+    <div class="lesson-card row p-3 mb-4 border rounded">
+        <div class="lesson-info col-md-8 d-flex align-items-center mb-3 mb-md-0">
+            <img src="assets/img/video-lesson.png" alt="Lesson Icon" class="w-20 h-20 mr-3">
+            <div class="lesson-details mr-4">
+    ${lessonData.lessonName ? `<h5 class="mb-2">${lessonData.lessonName}</h5>` : ''}
+    ${lessonData.description ? `<p class="mb-1">${lessonData.description}</p>` : ''}
+    ${lessonData.zoomMeetingLink ? `<a href="${lessonData.zoomMeetingLink}" class="mb-1"><i class="far fa-calendar-alt"></i> ${lessonData.zoomMeetingLink}</a>` : ''}
+    ${lessonData.totalViewsNumber !== null && lessonData.totalViewsNumber !== undefined ? `<span class="d-block mb-1"><i class="fa-solid fa-eye"></i> ${lessonData.totalViewsNumber}</span>` : ''}
+    ${lessonData.videosCount !== null && lessonData.videosCount !== undefined ? `<span class="d-block mb-1"> عدد المشاهدات المتبقية لك :${lessonData.videosCount}</span>` : ''}
+    ${lessonData.teacherName ? `<span class="d-block"><i class="far fa-user"></i> ${lessonData.teacherName}</span>` : ''}
+            </div>
+        </div>
+        <div class="lesson-status col-md-4 d-flex flex-column flex-md-row align-items-center justify-content-md-end">
+            <button class="btn join-lesson-btn ml-md-2 mb-2 mb-md-0" onclick="watchLesson('${lessonId}','${lessonData.isPurchased}','${lessonData.totalViewsNumber}')">مشاهدة الحصة</button>
+
+            <button class="btn download-pdf-btn ml-md-2 mb-2 mb-md-0" onclick="openPdfPopup('${lessonData.isPurchased}','${lessonId}')">تنزيل PDF</button>
+            <button class="btn download-pdf-btn ml-md-2 mb-2 mb-md-0" onclick="openLinksPopup('${lessonData.isPurchased}','${lessonId}')">مراجع الحصة</button>
+
+            <button class="btn start-exam-btn ml-md-2 mb-2 mb-md-0" onclick="openImportantExamPopup('${lessonData.isPurchased}','${lessonId}')">امتحانات هامة</button>
+            <button class="btn start-exam-btn ml-md-2" onclick="openExamPopup('${lessonData.isPurchased}','${lessonId}')">امتحان</button>
+${purchaseButton}
+        </div>
+    </div>
+`;
+
+                    $('#lessonContent').append(lessonCard);
+                
+            },
+            error: function(error) {
+                console.error('Error fetching lesson:', error);
+            }
+        });
+    }
+
+    function showPurchasePopup(lessonId,lessonPrice) {
+        $('#lessonPrice').text( 'EGP ' + lessonPrice +' :سعر الحصة' );
+        $('#purchaseLesson-popup').show();
+        localStorage.setItem('lessonId', lessonId);
+    }
+
+    function purchasePopUp(lessonId) {
+        $('#purchaseLesson-popup').show();
+        localStorage.setItem('lessonId', lessonId);
+
+    }
+    function purchaseViewsPopUp(isPurchased,lessonId) {
+        if (isPurchased == "false") {
+            $('#video-popup-isPurchased').show();
+        }
+        else {
+            $('#purchaseView-popup').show();
+            localStorage.setItem('lessonId', lessonId);
+        }
+        //$('#purchaseView-popup').show();
+        //localStorage.setItem('lessonId', lessonId);
+
+    }
+
+    function purchaseLessonViews() {
+            const token = localStorage.getItem('token');
+            const studentId = localStorage.getItem('userId');
+            const courseLessonsId = localStorage.getItem('lessonId'); // Assuming courseLessonsId is the same as lessonId
+
+            // Retrieve the value from the input field
+            const numberOfView = document.getElementById('numberOfViewInput').value;
+
+            // Log the numberOfView to make sure it's getting the correct value
+            console.log('Number of Views:', numberOfView);
+
+            if (!numberOfView || isNaN(numberOfView) || numberOfView <= 0) {
+                showMessagePopup('Please enter a valid number of views.');
+                return;
+            }
+
+            $.ajax({
+                url: 'http://pixelstamp-007-site3.htempurl.com/api/v3/Lesson/PurchaseViews',
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json-patch+json'
+                },
+                data: JSON.stringify({
+                    studentId: studentId,
+                    courseLessonsId: courseLessonsId,
+                    numberOfView: parseInt(numberOfView, 10)  // Ensure the value is sent as an integer
+                }),
+                success: function (response) {
+                    if (response.isSuccess) {
+                        showMessagePopup(`${response.message}`);
+                    } else {
+                        showMessagePopup(`Failed to purchase views: ${response.message}`);
+                    }
+                },
+                error: function (response) {
+                    showMessagePopup('Error purchasing views: ' + response.responseJSON.message);
+                }
+            });
+        }
+
+
+
+    function purchaseLesson() {
+        const token = localStorage.getItem('token');
+        const studentId = localStorage.getItem('userId');
+        const lessonId = localStorage.getItem('lessonId');
+
+        const requestData = {
+            studentId: studentId,
+            itemId: lessonId,
+        };
+
+        $.ajax({
+            url: 'http://pixelstamp-007-site3.htempurl.com/api/v3/Lesson/Purchase',
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json-patch+json'
+            },
+            data: JSON.stringify(requestData),
+            success: function (response) {
+                if (response.isSuccess) {
+                    alert('Lesson purchased successfully!');
+                    // Optionally reload the lesson or update the UI
+                } else {
+                    alert('Failed to purchase the lesson: ' + response.messageEnglish);
+                }
+            },
+            error: function (response) {
+                console.error('Error purchasing lesson:', response);
+                showMessagePopup(response.responseJSON.message);
+            }
+        });
+    }
+
+    function openLinksPopup(isPurchased,lessonId){
+         const token = localStorage.getItem('token');
+        const studentId = localStorage.getItem('userId');
+        if (isPurchased == "false") {
+            $('#video-popup-isPurchased').show();
+        }
+        else {
+
+        $.ajax({
+            url: `http://pixelstamp-007-site3.htempurl.com/api/v3/Lesson/LessonLinks?lessonId=${lessonId}&studentId=${studentId}`,
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            success: function (response) {
+                if (response.isSuccess && Array.isArray(response.data)) {
+                    $('#link-list').empty(); // Clear any existing links
+                    response.data.forEach(function (link) {
+                        const linkItem = `<li><a href="${link.link}" target="_blank">${link.linkName}</a></li>`;
+                        $('#link-list').append(linkItem);
+                    });
+                    $('#link-popup').show(); // Show the pop-up or modal with links
+                } else {
+                    showMessagePopup(response.messageEnglish);
+                }
+            },
+            error: function (response) {
+                showMessagePopup(response.responseJSON.message);
+            }
+        });}
+    }
+
+
+    function watchLesson(lessonId ,isPurchased,totalViewsNumber) {
+        console.log(totalViewsNumber)
+        console.log(isPurchased)
+        localStorage.setItem('lessonId', lessonId);
+        showMessagePopupVideo(isPurchased,totalViewsNumber);
+    }
+
+    function openPdfPopup(isPurchased,lessonId) {
+        const token = localStorage.getItem('token');
+        //const lessonId = localStorage.getItem('lessonId');
+        const studentId = localStorage.getItem('userId');
+
+        $('#pdf-list').empty();
+        if(isPurchased=="false"){
+            $('#video-popup-isPurchased').show();
+        }
+        else{
+   
+        $.ajax({
+            url: `http://pixelstamp-007-site3.htempurl.com/api/v3/Lesson/LessonPdf?lessonId=${lessonId}&studentId=${studentId}`,
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            success: function(response) {
+                if (response.isSuccess && Array.isArray(response.data)) {
+                    $('#pdf-list').empty();
+                    response.data.forEach(function(pdf) {
+                        $('#pdf-list').append('<li><a href="http://pixelstamp-007-site3.htempurl.com' + pdf.link + '" download target="_blank">' + pdf.pdfName + '</a></li>');
+                    });
+                    $('#pdf-popup').show();
+                } else {
+                    showMessagePopup(response.messageEnglish);
+                }
+            },
+            error: function(response) {
+                showMessagePopup(response.responseJSON.message);
+            }
+        });}
+    }
+
+    function openImportantExamPopup(isPurchased,lessonId) {
+        const token = localStorage.getItem('token');
+        //const lessonId = localStorage.getItem('lessonId');
+        const studentId = localStorage.getItem('userId');
+        if(isPurchased=="false"){
+            $('#video-popup-isPurchased').show();
+        }
+        else{
+
+        $.ajax({
+            url: `http://pixelstamp-007-site3.htempurl.com/api/v3/Exam/LessonImportantExams?lessonId=${lessonId}&studentId=${studentId}`,
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            success: function(response) {
+                if (response.isSuccess && Array.isArray(response.data)) {
+                    $('#exam-list').empty();
+                    response.data.forEach(function(exam) {
+                        const examItem = `<li><a href="#" onclick="startExam('${exam.examRelationId}')">${exam.examName}</a></li>`;
+                        $('#exam-list').append(examItem);
+                    });
+                    $('#exam-popup').show();
+                } else {
+                    showMessagePopup(response.messageEnglish);
+                }
+            },
+            error: function(response) {
+                showMessagePopup(response.responseJSON.message);
+            }
+        });}
+    }
+
+    function openExamPopup(isPurchased,lessonId){
+                const token = localStorage.getItem('token');
+        //const lessonId = localStorage.getItem('lessonId');
+        const studentId = localStorage.getItem('userId');
+        if (isPurchased == "false") {
+            $('#video-popup-isPurchased').show();
+        }
+        else {
+
+            $.ajax({
+                url: `http://pixelstamp-007-site3.htempurl.com/api/v3/Exam/LessonExams?lessonId=${lessonId}&studentId=${studentId}`,
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                success: function (response) {
+                    if (response.isSuccess && Array.isArray(response.data)) {
+                        $('#exam-list').empty();
+                        response.data.forEach(function (exam) {
+                            const examItem = `<li><a href="#" onclick="startExam('${exam.examRelationId}')">${exam.examName}</a></li>`;
+                            $('#exam-list').append(examItem);
+                        });
+                        $('#exam-popup').show();
+                    } else {
+                        showMessagePopup(response.messageEnglish);
+                    }
+                },
+                error: function (response) {
+                    showMessagePopup(response.responseJSON.message);
+                }
+            });
+        }
+
+
+    }
+
+
+
+    function startExam(examRelationId) {
+        localStorage.setItem('examRelationId', examRelationId);
+        window.location.href = `exam-page.html`;
+    }
+
+    function showMessagePopup(message) {
+        $('#message-content').text(message);
+        $('#message-popup').show();
+    }
+    function showMessagePopupVideo(isPurchased,totalViewsNumber){
+        if (isPurchased=="false"){
+            $('#video-popup-isPurchased').show();
+        }
+        else if (totalViewsNumber<=0){
+            $('#video-popup-ViewNum').show();
+        }
+        else{
+            $('#warning-video-view').show();
+        }
+
+            
+
+    }
+
+    // Close the modal when the user clicks on <span> (x)
+    $(document).on('click', '.close', function() {
+        $(this).closest('.modal').hide();
+    });
+
+    // Close the modal when the user clicks anywhere outside of the modal
+    $(window).on('click', function(event) {
+        if ($(event.target).hasClass('modal')) {
+          $(event.target).hide();
+        }
+    });
+</script>
+<script>
+     $(document).ready(function () {
+            function showPreloader() {
+                $(".preloader").fadeIn();
+            }
+
+            function hidePreloader() {
+                $(".preloader").fadeOut();
+            }
+
+            function fetchCourseDetails() {
+                var token = localStorage.getItem("token");
+                var studentId = localStorage.getItem("userId");
+                var courseId = localStorage.getItem("courseId");
+                var baseUrl = "http://pixelstamp-007-site3.htempurl.com";
+                var defaultImage = "assets/img/e-learn3.jpg"; // Path to your local default image
+                console.log(courseId); // Debugging: Log the courseId
+
+                if (!token) {
+                    console.error("Missing token in localStorage");
+                    return;
+                }
+
+                showPreloader();
+
+                $.ajax({
+                    url: `http://pixelstamp-007-site3.htempurl.com/api/v3/Course/Page?StudentId=${studentId}&CourseId=${courseId}`,
+                    type: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                    success: function (response) {
+                        localStorage.setItem("isPurchased", response.data.isPurchased);
+
+                        var courseName = response.data.courseName;
+                        var teacherName = response.data.teacherName;
+                        var isPurchased = response.data.isPurchased;
+                        var price = response.data.price;
+                        var lessonsNumber = response.data.lessonsNumber;
+                        var numberOfQuizzes = response.data.examsNumber;
+                        var courseImage = response.data.courseImage
+                            ? baseUrl + response.data.courseImage
+                            : defaultImage; // Properly handle null image
+                        var courseDescription = response.data.desription;
+
+                        // Update UI with the course details
+                        $("#course-details-title").text(courseName);
+                        $("#instructorName").text(teacherName);
+                        $("#coursePrice").text(price + " LE");
+                        $("#courseImg").attr("src", courseImage);
+                        $("#lessons").text(lessonsNumber);
+                        $("#course-info-instructor").text(teacherName);
+                        $("#quizzes").text(numberOfQuizzes);
+                        $("#course-description").text(courseDescription);
+                        $("#isPurchased").text(isPurchased ? "Start Course" : "BUY NOW");
+
+                        // Conditional logic based on purchase status
+                        if (isPurchased) {
+                            $("#isPurchased")
+                                .text("Start Course")
+                                .off("click")
+                                .on("click", function (e) {
+                                    e.preventDefault();
+                                    window.location.href = "lessonpage.html";
+                                });
+                            $("#viewDetails").hide();
+                        } else {
+                            $("#isPurchased")
+                                .text("BUY NOW")
+                                .on("click", function (e) {
+                                    e.preventDefault();
+                                    purchaseCourse();
+                                });
+                            $("#viewDetails").on("click", function (e) {
+                                e.preventDefault();
+                                window.location.href = "lessonpage.html";
+                            });
+                            $("#startExam").hide();
+                        }
+                    },
+                    error: function (error) {
+                        console.error(error.responseJSON.message);
+                    },
+                    complete: function () {
+                        // Always hide the preloader when the request is complete
+                        hidePreloader();
+                    },
+                });
+            }
+
+            // Call fetchCourseDetails when the document is ready
+            fetchCourseDetails();
+        });
+
+</script>
+
+
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/language.js"></script>
+</body>
+</html>
